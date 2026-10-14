@@ -1,6 +1,6 @@
 # Satvik Srivastava — Personal Portfolio
 
-A macOS-inspired interactive portfolio built with Next.js, React, and Tailwind CSS. It showcases my projects, technical skills, professional experience, and achievements through a desktop-style interface.
+A macOS-inspired interactive portfolio built with Next.js, React, and Tailwind CSS. It showcases my projects, technical skills, professional experience, and achievements through a desktop-style interface
 
 ## Live Portfolio
 
