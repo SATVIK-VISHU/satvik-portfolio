@@ -35,6 +35,29 @@ export default function Home() {
   const [isSafariOpen, setIsSafariOpen] = useState(false);
   const [isPortfolioOpen, setIsPortfolioOpen] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [windowZIndexes, setWindowZIndexes] = useState({
+  terminal: 50,
+  gallery: 40,
+  contact: 45,
+  safari: 35,
+  portfolio: 60,
+  chat: 65,
+});
+
+const [topZIndex, setTopZIndex] = useState(70);
+
+const bringToFront = (windowName: keyof typeof windowZIndexes) => {
+  setTopZIndex((prev) => {
+    const next = prev + 1;
+
+    setWindowZIndexes((current) => ({
+      ...current,
+      [windowName]: next,
+    }));
+
+    return next;
+  });
+};
 
   return (
     <main className={styles.main}>
@@ -106,42 +129,63 @@ export default function Home() {
 
           {/* Floating Terminal Window */}
           {isTerminalOpen && (
-            <DraggableWindow zIndex={50}>
+            <DraggableWindow
+              zIndex={windowZIndexes.terminal}
+              onFocus={() => bringToFront("terminal")}
+            >
               <TerminalWindow onClose={() => setIsTerminalOpen(false)} />
             </DraggableWindow>
           )}
 
           {/* Floating Gallery Window */}
           {isGalleryOpen && (
-            <DraggableWindow zIndex={40}>
+            <DraggableWindow
+              zIndex={windowZIndexes.gallery}
+              onFocus={() => bringToFront("gallery")}
+            >
               <Gallery onClose={() => setIsGalleryOpen(false)} />
             </DraggableWindow>
           )}
 
           {/* Floating Contact Window */}
           {isContactOpen && (
-            <DraggableWindow zIndex={45}>
+            <DraggableWindow
+              zIndex={windowZIndexes.contact}
+              onFocus={() => bringToFront("contact")}
+            >
               <ContactCard onClose={() => setIsContactOpen(false)} />
             </DraggableWindow>
           )}
 
           {/* Floating Safari Window */}
           {isSafariOpen && (
-            <DraggableWindow zIndex={35}>
+            <DraggableWindow
+              zIndex={windowZIndexes.safari}
+              onFocus={() => bringToFront("safari")}
+            >
               <SafariWindow onClose={() => setIsSafariOpen(false)} />
             </DraggableWindow>
           )}
 
           {/* Floating Portfolio Window */}
           {isPortfolioOpen && (
-            <DraggableWindow zIndex={60}>
-              <Portfolio onClose={() => setIsPortfolioOpen(false)} onOpenChat={() => setIsChatOpen(true)} />
+            <DraggableWindow
+              zIndex={windowZIndexes.portfolio}
+              onFocus={() => bringToFront("portfolio")}
+            >
+              <Portfolio
+                onClose={() => setIsPortfolioOpen(false)}
+                onOpenChat={() => setIsChatOpen(true)}
+              />
             </DraggableWindow>
           )}
 
           {/* Floating Chat Window */}
           {isChatOpen && (
-            <DraggableWindow zIndex={65}>
+            <DraggableWindow
+              zIndex={windowZIndexes.chat}
+              onFocus={() => bringToFront("chat")}
+            >
               <ChatWindow onClose={() => setIsChatOpen(false)} />
             </DraggableWindow>
           )}
@@ -180,11 +224,30 @@ const DraggableIcon = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-const DraggableWindow = ({ children, zIndex, width }: { children: React.ReactNode, zIndex: number, width?: string }) => {
+const DraggableWindow = ({
+  children,
+  zIndex,
+  width,
+  onFocus,
+}: {
+  children: React.ReactNode;
+  zIndex: number;
+  width?: string;
+  onFocus?: () => void;
+}) => {
   const nodeRef = useRef(null);
+
   return (
-    <Draggable nodeRef={nodeRef} handle=".window-handle">
-      <div ref={nodeRef} style={{ position: 'absolute', zIndex, width }}>
+    <Draggable
+      nodeRef={nodeRef}
+      handle=".window-handle"
+      onStart={onFocus}
+    >
+      <div
+        ref={nodeRef}
+        onPointerDown={onFocus}
+        style={{ position: 'absolute', zIndex, width }}
+      >
         <div className="window-animate">
           {children}
         </div>
