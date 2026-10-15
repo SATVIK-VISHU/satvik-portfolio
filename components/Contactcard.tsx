@@ -49,7 +49,7 @@ export default function ContactCard({ onClose }: ContactCardProps) {
     const [dotsHovered, setDotsHovered] = useState(false);
 
     return (
-        <div className="h-96 w-125 rounded-xl overflow-hidden shadow-2xl border border-white/10"
+        <div className="h-[min(384px,calc(100dvh-160px))] w-[min(500px,calc(100vw-32px))] max-w-full min-h-0 rounded-xl overflow-hidden shadow-2xl border border-white/10"
             style={{ background: "#1e1e1e", fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" }}>
 
             {/* Title bar */}

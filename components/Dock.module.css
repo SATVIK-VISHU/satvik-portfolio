@@ -51,26 +51,35 @@
 
 @media (max-width: 768px) {
   .dockItem {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
+    margin: 2px;
+    flex-shrink: 0;
+  }
+
+  .dockItem:hover {
+    transform: scale(1.05) translateY(-3px);
     margin: 2px;
   }
-  .dockItem:hover {
-    transform: scale(1.1) translateY(-5px);
-    margin: 0 5px;
-  }
+
   .iconImage {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
   }
+
   .dock {
-    padding: 6px;
-    gap: 4px;
+    padding: 7px;
+    gap: 5px;
+    max-width: calc(100vw - 16px);
     overflow-x: auto;
-    max-width: 95vw;
+    flex-wrap: nowrap;
   }
+
   .dockContainer {
-    margin: 10px;
-    bottom: 5px;
+    margin: 0;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+    padding: 0 8px;
   }
 }

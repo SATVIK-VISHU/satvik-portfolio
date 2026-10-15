@@ -193,7 +193,8 @@ export default function PhotosApp({ onClose }: GalleryProps) {
                 <div
                     style={{
                         display: "flex",
-                        height: 340,
+                        height: "min(340px, calc(100dvh - 180px))",
+                        minHeight: 0,
                         overflow: "hidden",
                     }}
                 >

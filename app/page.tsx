@@ -52,18 +52,18 @@ export default function Home() {
         src="/images/wallpaper.png"
         alt="macOS Wallpaper"
         fill
-        className={`${styles.wallpaper} hidden md:block`}
+        className={styles.wallpaper}
         priority
         onClick={() => setIsPortfolioOpen(true)}
       />
-      <div className="hidden md:block">
+      <div className="block">
         <MenuBar
           onOpenPortfolio={() => setIsPortfolioOpen(true)}
           onOpenContact={() => setIsContactOpen(true)}
         />
       </div>
 
-      <div className={`${styles.desktopArea} hidden md:flex`}>
+      <div className={`${styles.desktopArea} flex`}>
         <div className={styles.iconGrid}>
           <DraggableIcon>
             <DesktopIcon
@@ -148,7 +148,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="hidden md:block">
+      <div className="block">
         <Dock
           onOpenFinder={() => setIsPortfolioOpen((prev) => !prev)}
           onOpenTerminal={() => setIsTerminalOpen((prev) => !prev)}
@@ -165,15 +165,6 @@ export default function Home() {
         />
       </div>
 
-      {/* Mobile only standalone portfolio view */}
-      <div className="md:hidden w-full h-[100dvh] absolute inset-0 z-[10000] bg-[#0a0a0f]">
-        <Portfolio onOpenChat={() => setIsChatOpen(true)} />
-        {isChatOpen && (
-          <div className="absolute inset-0 z-[10001] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-            <ChatWindow onClose={() => setIsChatOpen(false)} />
-          </div>
-        )}
-      </div>
     </main>
   );
 }

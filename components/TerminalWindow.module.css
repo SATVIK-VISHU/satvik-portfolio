@@ -1,7 +1,8 @@
 
 .terminal {
-  width: 500px;
-  height: 450px;
+  width: min(500px, calc(100vw - 32px));
+  height: min(450px, calc(100dvh - 160px));
+  min-height: 0;
   background-color: rgba(30, 30, 30, 0.95);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.1);

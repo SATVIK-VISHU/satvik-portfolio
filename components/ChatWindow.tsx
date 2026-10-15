@@ -61,7 +61,7 @@ export default function ChatWindow({ onClose }: { onClose?: () => void }) {
 
     return (
         <div
-            className="w-[340px] md:w-[400px] h-[500px] flex flex-col rounded-xl overflow-hidden border border-white/10 bg-[#1c1c1e] shadow-2xl"
+            className="w-[calc(100vw-2rem)] max-w-[400px] h-[min(500px,calc(100dvh-2rem))] min-h-0 flex flex-col rounded-xl overflow-hidden border border-white/10 bg-[#1c1c1e] shadow-2xl"
         >
             {/* Chat Header */}
             <div className="window-handle cursor-grab active:cursor-grabbing flex items-center px-4 py-3 border-b border-white/[0.07] bg-[#2a2a2c] relative">

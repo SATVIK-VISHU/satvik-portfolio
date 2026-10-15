@@ -66,10 +66,10 @@ export default function SafariWindow({ onClose }: SafariWindowProps) {
 
   return (
     <div
-      className="rounded-xl border border-white/10 bg-[#1c1c1e] select-none overflow-hidden shadow-2xl flex flex-col transition-all duration-300"
+      className="w-full max-w-full rounded-xl border border-white/10 bg-[#1c1c1e] select-none overflow-hidden shadow-2xl flex flex-col transition-all duration-300"
       style={{
-        width: isMaximized ? '100%' : 780,
-        height: isMaximized ? 'calc(100vh - 80px)' : 500,
+        width: isMaximized ? '100%' : 'min(780px, calc(100vw - 32px))',
+        height: isMaximized ? 'calc(100dvh - 80px)' : 'min(500px, calc(100dvh - 120px))',
         fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif"
       }}
     >

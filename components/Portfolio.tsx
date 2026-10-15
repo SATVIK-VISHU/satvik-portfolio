@@ -290,7 +290,7 @@ export default function Portfolio({ onClose, onOpenChat }: { onClose?: () => voi
                 relative
                 flex flex-col
                 w-full md:w-[800px]
-                h-full md:h-[83vh]
+                h-[calc(100dvh-140px)] md:h-[83vh]
                 md:my-6
                 overflow-hidden
                 md:rounded-xl
@@ -310,7 +310,7 @@ export default function Portfolio({ onClose, onOpenChat }: { onClose?: () => voi
 
             {/* Scrollable content */}
             <div
-                className="flex-1 bg-[#1a1a1c] px-6 md:px-8 py-7 overflow-y-auto pb-24 scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent hover:scrollbar-thumb-white/30"
+                className="flex-1 min-h-0 bg-[#1a1a1c] px-4 sm:px-6 md:px-8 py-5 sm:py-7 overflow-y-auto overscroll-y-contain touch-pan-y pb-28 scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent hover:scrollbar-thumb-white/30"
             >
                 {/* ── Hero (macOS Profile Style) ── */}
                 <section id="hero" className="flex items-center gap-5 mb-6">
@@ -401,7 +401,7 @@ export default function Portfolio({ onClose, onOpenChat }: { onClose?: () => voi
             </div>
 
             {/* Ask Me Floating Button */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center">
+            <div className="absolute bottom-4 right-4 left-auto z-50 flex flex-col items-center md:bottom-8 md:left-1/2 md:right-auto md:-translate-x-1/2">
                 <button
                     onClick={onOpenChat}
                     className="
